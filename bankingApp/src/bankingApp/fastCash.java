@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -23,11 +24,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class fastCash extends JFrame {
 
 	private JPanel contentPane;
-
 	static int AccID;
 	/**
 	 * Launch the application.
@@ -44,6 +46,118 @@ public class fastCash extends JFrame {
 			}
 		});
 	}
+	
+String MyDate;
+	
+	public void getDate() {
+		Date today = new Date();
+		SimpleDateFormat s = new SimpleDateFormat("dd-MM-yyyy");
+		MyDate = s.format(today);
+	}
+	
+	
+	private void withdraw120() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -20);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+	
+	private void withdraw140() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -40);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+	
+	private void withdraw180() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -80);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+	
+	private void withdraw1100() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -100);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+	
+	private void withdraw1200() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -200);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+	
+	private void withdraw13() {
+		try {
+			getDate();
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+			PreparedStatement add = con.prepareStatement("insert into transaction values(?,?,?,?)");
+			add.setInt(1, 2);
+			add.setInt(2, AccID);
+			add.setInt(3, -300);
+			add.setString(4, MyDate);
+			int row = add.executeUpdate();
+			con.close();
+
+		} catch(Exception e) {
+			JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.PLAIN_MESSAGE);
+	}
+	}
+
 	
 	Connection con = null;
 	PreparedStatement pst = null;
@@ -129,6 +243,7 @@ public class fastCash extends JFrame {
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw120();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
@@ -144,20 +259,12 @@ public class fastCash extends JFrame {
 		});
 		
 		Button20.setFont(new Font("Berlin Sans FB", Font.PLAIN, 25));
-		Button20.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		Button20.setForeground(Color.BLACK);
 		Button20.setBackground(Color.WHITE);
 		Button20.setBounds(87, 224, 175, 65);
 		panel.add(Button20);
 		
 		JButton Button40 = new JButton("$40");
-		Button40.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		Button40.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -173,6 +280,7 @@ public class fastCash extends JFrame {
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw140();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
@@ -193,6 +301,35 @@ public class fastCash extends JFrame {
 		panel.add(Button40);
 		
 		JButton Button80 = new JButton("$80");
+		Button80.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(OldBalance < 80) {
+					JOptionPane.showMessageDialog(null, "Unable to withdraw!",null, JOptionPane.PLAIN_MESSAGE);
+				} else {
+					
+					try {
+						String query = "Update newUsers set balance = ? where accountID = ?";
+						con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
+						PreparedStatement ps = con.prepareStatement(query);
+						ps.setInt(1, OldBalance - 80);
+						ps.setInt(2, AccountID);
+						if(ps.executeUpdate() == 1) {
+							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw180();
+							new mainMenu(AccountID).setVisible(true);
+							dispose();
+						} else {
+							JOptionPane.showMessageDialog(null, "Missing Information", null, JOptionPane.PLAIN_MESSAGE);
+						}
+						
+					} catch (SQLException e1) {
+						JOptionPane.showMessageDialog(null, e1, null, JOptionPane.PLAIN_MESSAGE);
+						
+					}
+				}
+			}
+		});
 		Button80.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(OldBalance < 80) {
@@ -242,6 +379,7 @@ public class fastCash extends JFrame {
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw1100();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
@@ -277,6 +415,7 @@ public class fastCash extends JFrame {
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw1200();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
@@ -312,6 +451,7 @@ public class fastCash extends JFrame {
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
+							withdraw13();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
