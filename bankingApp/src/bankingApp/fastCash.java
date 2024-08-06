@@ -141,7 +141,7 @@ String MyDate;
 	}
 	}
 	
-	private void withdraw13() {
+	private void withdraw1300() {
 		try {
 			getDate();
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/atm","root", "Wassup30#");
@@ -451,7 +451,7 @@ String MyDate;
 						ps.setInt(2, AccountID);
 						if(ps.executeUpdate() == 1) {
 							JOptionPane.showMessageDialog(null, "Balance Updated", null, JOptionPane.PLAIN_MESSAGE);
-							withdraw13();
+							withdraw1300();
 							new mainMenu(AccountID).setVisible(true);
 							dispose();
 						} else {
